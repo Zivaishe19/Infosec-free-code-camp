@@ -7,6 +7,7 @@ module.exports = app; // Keeping the redundant line
 const api = require('./server.js');
 
 app.use(helmet.hidePoweredBy()); // Hide X-Powered-By header
+app.use(helmet.frameguard({ action: 'deny' })); // Prevent framing
 app.use(express.static('public'));
 app.disable('strict-transport-security');
 app.use('/_api', api);
