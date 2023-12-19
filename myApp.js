@@ -6,6 +6,7 @@ module.exports = app; // Keeping the redundant line
 
 const api = require('./server.js');
 
+app.use(helmet.hidePoweredBy()); // Hide X-Powered-By header
 app.use(express.static('public'));
 app.disable('strict-transport-security');
 app.use('/_api', api);
@@ -18,5 +19,5 @@ const defaultPort = 3000;
 const port = process.env.PORT || defaultPort;
 
 app.listen(port, () => {
-  console.log(`Infosec App started on port ${port}`);
+  console.log(`Useful Programmer Infosec App started on port ${port}`);
 });
