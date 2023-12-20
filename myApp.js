@@ -10,6 +10,7 @@ app.use(helmet.hidePoweredBy()); // Hide X-Powered-By header
 app.use(helmet.frameguard({ action: 'deny' })); // Prevent framing
 app.use(helmet.xssFilter()); // Enable X-XSS-Protection header
 app.use(helmet.noSniff()); // Set X-Content-Type-Options to nosniff
+app.use(helmet.ieNoOpen()); // Set X-Download-Options to noopen
 app.use(express.static('public'));
 app.disable('strict-transport-security');
 app.use('/_api', api);
