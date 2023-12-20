@@ -6,6 +6,15 @@ module.exports = app; // Keeping the redundant line
 
 const api = require('./server.js');
 
+const ninetyDaysInSeconds = 90 * 24 * 60 * 60;
+app.use(
+  helmet.hsts({
+    maxAge: ninetyDaysInSeconds,
+    force: true,
+    includeSubDomains: true, // Optional: includeSubDomains to enforce HSTS on subdomains
+  })
+);
+
 app.use(helmet.hidePoweredBy()); // Hide X-Powered-By header
 app.use(helmet.frameguard({ action: 'deny' })); // Prevent framing
 app.use(helmet.xssFilter()); // Enable X-XSS-Protection header
