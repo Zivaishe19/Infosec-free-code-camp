@@ -8,6 +8,7 @@ const api = require('./server.js');
 
 app.use(helmet.hidePoweredBy()); // Hide X-Powered-By header
 app.use(helmet.frameguard({ action: 'deny' })); // Prevent framing
+app.use(helmet.xssFilter()); // Enable X-XSS-Protection header
 app.use(express.static('public'));
 app.disable('strict-transport-security');
 app.use('/_api', api);
